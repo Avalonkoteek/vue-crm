@@ -102,7 +102,7 @@ export default {
           limit: this.limit
         };
         await this.$store.dispatch("updateCategory", categoryData);
-        this.$message("Категория успешно обновлена");
+        this.$message("Катгория успешно обновлена");
         this.$emit("updated", categoryData);
       } catch (e) {}
     }
