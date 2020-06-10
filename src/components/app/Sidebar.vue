@@ -22,7 +22,7 @@ export default {
       { title: localizeFilter("Menu_History"), url: "/history" },
       { title: localizeFilter("Menu_Planning"), url: "/planning" },
       { title: localizeFilter("Menu_Record"), url: "/record" },
-      { title: localizeFilter("Menu_Categories"), url: "/categories" }
+      { title: localizeFilter("Categories"), url: "/categories" }
     ]
   })
 };

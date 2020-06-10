@@ -3,8 +3,11 @@
     <Loader v-if="loading" />
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">История</router-link>
-        <a @click.prevent class="breadcrumb">{{record.type === 'income'?"Доход":"Расход"}}</a>
+        <router-link to="/history" class="breadcrumb">{{"Menu_History"|localize}}</router-link>
+        <a
+          @click.prevent
+          class="breadcrumb"
+        >{{record.type === 'income'?localText("Income"):localText("Outcome")}}</a>
       </div>
       <div class="row">
         <div class="col s12 m6">
@@ -15,9 +18,9 @@
             'green':record.type === 'income'}"
           >
             <div class="card-content white-text">
-              <p>Описание: {{record.description}}</p>
-              <p>Сумма: {{record.amount | currency}}</p>
-              <p>Категория: {{record.categoryName}}</p>
+              <p>{{"Description" | localize}}: {{record.description}}</p>
+              <p>{{"Amount"| localize}}: {{record.amount | currency}}</p>
+              <p>{{"Category" | localize}}: {{record.categoryName}}</p>
 
               <small>{{record.date | date('datetime')}}</small>
             </div>
@@ -29,6 +32,7 @@
   </div>
 </template>
 <script>
+import localizeFilter from "../filters/localize.filter";
 export default {
   name: "detail",
   data: () => ({
@@ -47,6 +51,11 @@ export default {
       categoryName: category.title
     };
     this.loading = false;
+  },
+  methods: {
+    localText(text) {
+      return localizeFilter(text);
+    }
   }
 };
 </script>

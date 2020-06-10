@@ -1,0 +1,54 @@
+___Категории
+
+Введите название категории
+Enter a category name
+
+
+Выберите категорию
+Select a category
+
+Обновить
+Refresh
+
+___Новая Запись 
+РУ
+
+
+
+ENG
+___Планирование
+РУ
+из
+of
+ENG
+___История
+РУ
+История записей
+Record History
+Дата
+Date
+Категория
+Category
+Тип
+A type
+Открыть
+Open
+Подробнее
+More details
+Вперед
+Next
+Назад
+previous
+ENG
+___Счет
+РУ
+Счет в валюте
+Currency Account
+Курс валют
+Exchange Currency
+Валюта
+Currency
+Курс
+Exchange
+
+

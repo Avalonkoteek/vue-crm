@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{"Menu_History" | localize}}</h3>
     </div>
 
     <div class="history-chart">
@@ -9,8 +9,8 @@
     </div>
     <Loader v-if="loading" />
     <p class="center" v-else-if="!records.length">
-      Записей пока нет
-      <router-link to="/record">Добавьте первую!</router-link>
+      {{"Record_not_found" | localize}}
+      <router-link to="/record">{{"Enter_record"| localize}}</router-link>
     </p>
     <section v-else>
       <HistoryTable :records="items" />
@@ -18,8 +18,8 @@
         v-model="page"
         :page-count="pageCount"
         :click-handler="pageChangeHandler"
-        :prev-text="'Назад'"
-        :next-text="'Вперед'"
+        :prev-text="localText('Prev')"
+        :next-text="localText('Next')"
         :container-class="'pagination'"
         :page-class="'waves-effect'"
       />
@@ -29,6 +29,7 @@
 <script>
 import paginationMixin from "../mixins/pagination.mixin";
 import HistoryTable from "../components/HistoryTable";
+import localizeFilter from "../filters/localize.filter";
 import { Pie } from "vue-chartjs";
 export default {
   name: "history",
@@ -50,6 +51,9 @@ export default {
     this.loading = false;
   },
   methods: {
+    localText(text) {
+      return localizeFilter(text);
+    },
     setup(categories) {
       this.setupPagination(
         this.records.map(record => {
@@ -58,7 +62,10 @@ export default {
             categoryName: categories.find(c => c.id === record.categoryId)
               .title,
             typeClass: record.type === "income" ? "green" : "red",
-            typeText: record.type === "income" ? "доход" : "расход"
+            typeText:
+              record.type === "income"
+                ? localizeFilter("Income")
+                : localizeFilter("Outcome")
           };
         })
       );
@@ -66,7 +73,7 @@ export default {
         labels: categories.map(c => c.title),
         datasets: [
           {
-            label: "Расходы по категориям",
+            label: localizeFilter("Costs_by_Category"),
             data: categories.map(c => {
               return this.records.reduce((total, r) => {
                 if (r.categoryId === c.id && r.type === "outcome") {
