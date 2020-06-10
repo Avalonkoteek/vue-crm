@@ -12,25 +12,25 @@
           v-model="name"
           :class="{ invalid: $v.name.$dirty && !$v.name.required }"
         />
-        <label for="description">Имя</label>
+        <label for="description">{{ "Name" | localize }}</label>
         <small
           class="helper-text invalid"
           v-if="$v.name.$dirty && !$v.name.required"
-          >Поле не может быть пустым</small
+          >{{ "Message_EnterName" | localize }}</small
         >
       </div>
 
       <div class="switch">
         <label>
-          ENG
+          English
           <input type="checkbox" v-model="isRuLocale" />
           <span class="lever"></span>
-          RUS
+          Русский
         </label>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Обновить
+        {{ "Update" | localize }}
         <i class="material-icons right">send</i>
       </button>
     </form>
