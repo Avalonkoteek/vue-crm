@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{"Menu_Bill"|localize}}</h3>
+      <h3>{{ "Menu_Bill" | localize }}</h3>
 
       <button class="btn waves-effect waves-light btn-small" @click="refresh">
         <i class="material-icons">refresh</i>
@@ -16,11 +16,13 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HomeBill from "../components/HomeBill";
 import HomeCurrency from "../components/HomeCurrency";
 export default {
   name: "Home",
+  metaInfo() {
+    return { title: this.$title("Menu_Bill") };
+  },
   data: () => ({
     loading: true,
     currency: null

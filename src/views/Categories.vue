@@ -13,7 +13,7 @@
           :key="categories.length + updateCount"
           @updated="updateCategories"
         />
-        <p v-else class="center">{{'No_categories' | localize}}</p>
+        <p v-else class="center">{{ "No_categories" | localize }}</p>
       </div>
     </section>
   </div>
@@ -25,6 +25,9 @@ export default {
   components: {
     CategoryCreate,
     CategoryEdit
+  },
+  metaInfo() {
+    return { title: this.$title("Categories") };
   },
   name: "categories",
   data: () => ({

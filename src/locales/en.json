@@ -34,11 +34,13 @@
   "Next": "Next",
   "Prev": "Prev",
   "Add_category": "add new category",
-  "Currency_Account": "Currency Account",
-  "Exchange_Currency": "Exchange Currency",
+  "Currency_Account": "Bill in currencies",
+  "Exchange_Currency": "Currencies rates",
   "Currency": "Currency",
-  "Exchange": "Exchange",
+  "Exchange": "Rate",
   "Add_Description": "Add Description",
   "Excess_on": "Excess on",
-  "There_are": "Balance"
+  "There_are": "Balance",
+  "Profile": "Profile",
+  "logout": "Logout"
 }

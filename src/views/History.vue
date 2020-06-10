@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{"Menu_History" | localize}}</h3>
+      <h3>{{ "Menu_History" | localize }}</h3>
     </div>
 
     <div class="history-chart">
@@ -9,8 +9,8 @@
     </div>
     <Loader v-if="loading" />
     <p class="center" v-else-if="!records.length">
-      {{"Record_not_found" | localize}}
-      <router-link to="/record">{{"Enter_record"| localize}}</router-link>
+      {{ "Record_not_found" | localize }}
+      <router-link to="/record">{{ "Enter_record" | localize }}</router-link>
     </p>
     <section v-else>
       <HistoryTable :records="items" />
@@ -32,6 +32,9 @@ import HistoryTable from "../components/HistoryTable";
 import localizeFilter from "../filters/localize.filter";
 import { Pie } from "vue-chartjs";
 export default {
+  metaInfo() {
+    return { title: this.$title("Menu_History") };
+  },
   name: "history",
   extends: Pie,
   mixins: [paginationMixin],

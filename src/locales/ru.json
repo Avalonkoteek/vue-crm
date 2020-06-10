@@ -40,5 +40,7 @@
   "Exchange_Currency": "Курс валют",
   "Currency": "Валюта",
   "Exchange": "Курс",
-  "Add_Description": "Добавтье описание"
+  "Add_Description": "Добавтье описание",
+  "Profile": "Профиль",
+  "logout": "Выйти"
 }

@@ -3,38 +3,41 @@
     <Loader v-if="loading" />
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">{{"Menu_History"|localize}}</router-link>
-        <a
-          @click.prevent
-          class="breadcrumb"
-        >{{record.type === 'income'?localText("Income"):localText("Outcome")}}</a>
+        <router-link to="/history" class="breadcrumb">{{
+          "Menu_History" | localize
+        }}</router-link>
+        <a @click.prevent class="breadcrumb">{{
+          record.type === "income" ? localText("Income") : localText("Outcome")
+        }}</a>
       </div>
       <div class="row">
         <div class="col s12 m6">
           <div
             class="card"
             :class="{
-            'red':record.type === 'outcome',
-            'green':record.type === 'income'}"
+              red: record.type === 'outcome',
+              green: record.type === 'income'
+            }"
           >
             <div class="card-content white-text">
-              <p>{{"Description" | localize}}: {{record.description}}</p>
-              <p>{{"Amount"| localize}}: {{record.amount | currency}}</p>
-              <p>{{"Category" | localize}}: {{record.categoryName}}</p>
+              <p>{{ "Description" | localize }}: {{ record.description }}</p>
+              <p>{{ "Amount" | localize }}: {{ record.amount | currency }}</p>
+              <p>{{ "Category" | localize }}: {{ record.categoryName }}</p>
 
-              <small>{{record.date | date('datetime')}}</small>
+              <small>{{ record.date | date("datetime") }}</small>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <p class="center" v-else>Запись с id={{$route.params.id}} не найдена</p>
+    <p class="center" v-else>Запись с id={{ $route.params.id }} не найдена</p>
   </div>
 </template>
 <script>
 import localizeFilter from "../filters/localize.filter";
 export default {
   name: "detail",
+
   data: () => ({
     record: null,
     loading: true

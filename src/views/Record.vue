@@ -1,34 +1,50 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>{{"Menu_Record"| localize}}</h3>
+      <h3>{{ "Menu_Record" | localize }}</h3>
     </div>
     <Loader v-if="loading" />
 
     <p class="center" v-else-if="!categories.length">
-      {{"No_categories"| localize}}
-      <router-link to="/categories">{{"Add_category"| localize}}</router-link>
+      {{ "No_categories" | localize }}
+      <router-link to="/categories">{{
+        "Add_category" | localize
+      }}</router-link>
     </p>
 
     <form v-else class="form" @submit.prevent="submitHandler">
       <div class="input-field">
         <select ref="select" v-model="category">
-          <option v-for="c in categories" :key="c.id" :value="c.id">{{c.title}}</option>
+          <option v-for="c in categories" :key="c.id" :value="c.id">{{
+            c.title
+          }}</option>
         </select>
-        <label>{{"Select_category"| localize}}</label>
+        <label>{{ "Select_category" | localize }}</label>
       </div>
 
       <p>
         <label>
-          <input class="with-gap" name="type" type="radio" value="income" v-model="type" />
-          <span>{{"Income"| localize}}</span>
+          <input
+            class="with-gap"
+            name="type"
+            type="radio"
+            value="income"
+            v-model="type"
+          />
+          <span>{{ "Income" | localize }}</span>
         </label>
       </p>
 
       <p>
         <label>
-          <input class="with-gap" name="type" type="radio" value="outcome" v-model="type" />
-          <span>{{"Outcome"| localize}}</span>
+          <input
+            class="with-gap"
+            name="type"
+            type="radio"
+            value="outcome"
+            v-model="type"
+          />
+          <span>{{ "Outcome" | localize }}</span>
         </label>
       </p>
 
@@ -37,13 +53,15 @@
           id="amount"
           type="number"
           v-model.number="amount"
-          :class="{invalid:$v.amount.$dirty && !$v.amount.minValue}"
+          :class="{ invalid: $v.amount.$dirty && !$v.amount.minValue }"
         />
-        <label for="amount">{{"Amount"| localize}}</label>
+        <label for="amount">{{ "Amount" | localize }}</label>
         <span
           class="helper-text invalid"
           v-if="$v.amount.$dirty && !$v.amount.minValue"
-        >{{"Minimal_value"| localize}} {{$v.amount.$params.minValue.min}}</span>
+          >{{ "Minimal_value" | localize }}
+          {{ $v.amount.$params.minValue.min }}</span
+        >
       </div>
 
       <div class="input-field">
@@ -51,17 +69,20 @@
           id="description"
           type="text"
           v-model="description"
-          :class="{invalid:$v.description.$dirty && !$v.description.required}"
+          :class="{
+            invalid: $v.description.$dirty && !$v.description.required
+          }"
         />
-        <label for="description">{{"Description"| localize}}</label>
+        <label for="description">{{ "Description" | localize }}</label>
         <span
           class="helper-text invalid"
           v-if="$v.description.$dirty && !$v.description.required"
-        >{{"Add_Description"| localize}}</span>
+          >{{ "Add_Description" | localize }}</span
+        >
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        {{"Create"| localize}}
+        {{ "Create" | localize }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -71,6 +92,9 @@
 import { required, minValue } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 export default {
+  metaInfo() {
+    return { title: this.$title("Menu_Record") };
+  },
   name: "record",
   validations: {
     description: { required },
