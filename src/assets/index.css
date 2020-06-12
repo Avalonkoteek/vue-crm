@@ -15,7 +15,6 @@
   background: url("./image/empty-layout.jpg") no-repeat;
   background-size: cover;
   object-fit: cover;
-  border-radius: 10px;
 }
 .auth-card {
   width: 500px;
