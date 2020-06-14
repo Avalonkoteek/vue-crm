@@ -20,10 +20,11 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchCurrency() {
-      const key = process.env.VUE_APP_FIXER;
-      const res = await fetch(
-        `https://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`
-      );
+      const key = process.env.VUE_APP_HTTPS_FIXER;
+      // const res = await fetch(
+      //   `https://fcsapi.com/api-v2/forex/base_latest?symbol=EUR&type=forex&access_key=${key}`
+      // );
+      const res = await fetch(`https://www.cbr-xml-daily.ru/daily_json.js`);
       return await res.json();
     }
   },

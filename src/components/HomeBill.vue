@@ -14,19 +14,19 @@
 <script>
 export default {
   props: ["rates"],
-  computed: {
-    base() {
-      return (
-        this.$store.getters.info.bill / (this.rates["RUB"] / this.rates["EUR"])
-      );
-    }
-  },
+
   data: () => ({
     currencues: ["RUB", "USD", "EUR"]
   }),
   methods: {
     getCurrency(currency) {
-      return Math.floor(this.base * this.rates[currency]);
+      if (currency === "RUB") {
+        return this.$store.getters.info.bill;
+      } else {
+        return Math.floor(
+          this.$store.getters.info.bill / this.rates[currency].Value
+        );
+      }
     }
   }
 };
